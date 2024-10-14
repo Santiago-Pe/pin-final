@@ -7,7 +7,7 @@ eksctl create cluster \
 --nodes 3 \
 --with-oidc \
 --ssh-access \
---ssh-public-key script-user-data \
+--ssh-public-key pin \
 --managed \
 --full-ecr-access \
 --zones us-east-1a,us-east-1b,us-east-1c

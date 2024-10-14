@@ -15,8 +15,8 @@ resource "aws_iam_role" "ec2_role" {
   })
 }
 
-resource "aws_iam_role_policy" "ec2_policy" {
-  name = "ec2_policy"
+resource "aws_iam_role_policy" "eks_policy" {
+  name = "eks_policy_v2"
   role = aws_iam_role.ec2_role.id
 
   policy = jsonencode({
@@ -24,19 +24,19 @@ resource "aws_iam_role_policy" "ec2_policy" {
     "Statement": [
       {
         "Effect": "Allow",
-        "Action": [
-          "ecr:GetDownloadUrlForLayer",
-          "ecr:BatchGetImage",
-          "ecr:BatchCheckLayerAvailability",
-          "s3:ListBucket",
-          "s3:GetObject",
-          "s3:PutObject"
-        ],
+       "Action": [
+        "cloudformation:*",
+        "eks:*",
+        "ec2:*",
+        "iam:*",
+      ],
         "Resource": "*"
       }
     ]
   })
 }
+
+
 
 resource "aws_iam_instance_profile" "ec2_instance_profile" {
   name = "ec2_instance_profile"
