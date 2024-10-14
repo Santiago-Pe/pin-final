@@ -7,6 +7,7 @@ module "ssh_key" {
   key_name = "pin"
 }
 
+# Check
 module "security_group" {
   source         = "./modules/security_group"
   allowed_ssh_ips = ["0.0.0.0/0"]
